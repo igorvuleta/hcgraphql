@@ -1,4 +1,6 @@
 ﻿using hcgraphqlnew.Models;
+using hcgraphqlnew.Repository.ProductsRepository;
+using HotChocolate;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,33 +10,12 @@ namespace hcgraphqlnew
 {
     public class Query
     {
-        private northwindContext _northwindContext;
-        public Query(northwindContext northwindcontext)
-        {
-            _northwindContext = northwindcontext;
-        }
-        public string TableName()
-        {
-            var entityTypes =  _northwindContext.Model.GetEntityTypes().Select(t => t.ClrType).ToList();
-
-            List<object> getNames = new List<object>();
-            foreach (var entity in entityTypes)
-            {
-                var name = entity.Name;
-
-
-                return name;
-                
-            }
-
-
-            return getNames.ToList().ToString();
-            
-        }
+        
+      public IQueryable<Products> GetProducts([Service]IProductsRepository repository)
+      {
+         return repository.GetProducts();
+      }
     }
 
-    public class Greetings
-    {
-        public string Hello() => "World";
-    }
+ 
 }
