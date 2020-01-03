@@ -8,6 +8,8 @@ using hcgraphqlnew.Types;
 using hcgraphqlnew.Repository.ProductsRepository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using HotChocolate.AspNetCore.Voyager;
+using hcgraphqlnew.Repository.CategoriesRepository;
 
 namespace hcgraphqlnew
 {
@@ -26,7 +28,8 @@ namespace hcgraphqlnew
          // If you need dependency injection with your query object add your query type as a services.
          // services.AddSingleton<Query>();
 
-         services.AddScoped<IProductsRepository, ProductsRepository>();
+         services.AddTransient<IProductsRepository, ProductsRepository>();
+         services.AddTransient<ICategoriesRepository, CategoriesRepository>();
             services.AddDbContext<northwindContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("NorthWind"))); ;
             // enable InMemory messaging services for subscription support.
@@ -39,7 +42,7 @@ namespace hcgraphqlnew
          services.AddGraphQL(sp => SchemaBuilder.New()
              // enable for authorization support
              // .AddDirectiveType<AuthorizeDirectiveType>()
-             .AddQueryType<Query>()
+             .AddQueryType<QueryType>()
              .AddServices(sp)
              .Create());
         }
@@ -56,6 +59,7 @@ namespace hcgraphqlnew
 
              .UseWebSockets()
              .UseGraphQL()
+             .UseVoyager()
              .UsePlayground();
       }
     }

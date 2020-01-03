@@ -15,6 +15,7 @@ namespace hcgraphqlnew.Repository.ProductsRepository
          _northwindContext = northwindContext;
       }
 
+
       public IQueryable<Products> GetProducts()
       {
          return _northwindContext.Products;

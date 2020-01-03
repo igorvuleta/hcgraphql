@@ -1,4 +1,5 @@
 ﻿using hcgraphqlnew.Models;
+using hcgraphqlnew.Repository.CategoriesRepository;
 using hcgraphqlnew.Repository.ProductsRepository;
 using HotChocolate;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,11 @@ namespace hcgraphqlnew
       {
          return repository.GetProducts();
       }
-    }
+      public IQueryable<Categories> GetCategories([Service]ICategoriesRepository repository)
+      {
+         return repository.GetCategories();
+      }
+   }
 
  
 }

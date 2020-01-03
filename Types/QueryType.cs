@@ -13,9 +13,15 @@ namespace hcgraphqlnew.Types
         protected override void Configure(IObjectTypeDescriptor<Query> descriptor)
         {
          descriptor.Field(t => t.GetProducts(default))
-            .UsePaging<ProductType>();
-            
-            
-        }
+               .UseFiltering()
+               .UseSorting()
+               .Argument("CategoryId", a => a.Type<IntType>());
+
+
+         descriptor.Field(t => t.GetCategories(default))
+             .UseFiltering()
+             .UseSorting();
+
+      }
     }
 }
