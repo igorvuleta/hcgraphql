@@ -14,13 +14,13 @@ namespace hcgraphqlnew.Types
       protected override void Configure(IObjectTypeDescriptor<Products> descriptor)
       {
          descriptor.Field(t => t.ProductId).Type<NonNullType<IntType>>();
-         descriptor.Field(t => t.Category).Type<ProductType>().Resolver(ctx =>
-         {
-            CategoriesRepository repository = ctx.Service<CategoriesRepository>();
+         descriptor.Field(t => t.Category).Type<ProductType>().Resolver(context =>
+         
+            context
+            .Service<ICategoriesRepository>()
+            .GetCategory(context.Parent<Categories>().CategoryId)
 
-            return  repository.GetCategory(ctx.Parent<Products>().CategoryId);
-
-         }
+         
 
 
          );
