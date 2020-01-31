@@ -15,6 +15,12 @@ namespace hcgraphqlnew.Types
       {
          descriptor.Field(a => a.CategoryId).Type<NonNullType<IdType>>();
          descriptor.Field(a => a.CategoryName).Type<StringType>();
+         descriptor.Field(a => a.Products).Type<ListType<ProductType>>().Resolver(ctx =>
+
+            ctx.Service<IProductsRepository>().GetProductsList(ctx.Parent<Categories>().CategoryId));
+
+
+         
         
       }
    }
