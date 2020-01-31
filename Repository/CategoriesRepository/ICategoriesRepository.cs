@@ -9,6 +9,6 @@ namespace hcgraphqlnew.Repository.CategoriesRepository
    public interface ICategoriesRepository
    {
       IQueryable<Categories> GetCategories();
-      Categories GetCategory(int? categoryId);
+      Task<Categories> GetCategory(int? categoryId);
    }
 }

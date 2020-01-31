@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using hcgraphqlnew.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace hcgraphqlnew.Repository.CategoriesRepository
 {
@@ -17,12 +18,13 @@ namespace hcgraphqlnew.Repository.CategoriesRepository
 
       public IQueryable<Categories> GetCategories()
       {
-         return _northwindContext.Categories;
+         return  _northwindContext.Categories.AsQueryable();
       }
 
-      public Categories GetCategory(int? categoryId)
+      public async Task<Categories>  GetCategory(int? categoryId)
       {
-         return  _northwindContext.Categories.Where(c => c.CategoryId == categoryId).FirstOrDefault();
+          return await _northwindContext.Categories.Where(c => c.CategoryId == categoryId).FirstOrDefaultAsync();
+        
       }
    }
 }

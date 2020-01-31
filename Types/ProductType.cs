@@ -1,6 +1,8 @@
-﻿using hcgraphqlnew.Models;
+﻿using GreenDonut;
+using hcgraphqlnew.Models;
 using hcgraphqlnew.Repository.CategoriesRepository;
 using hcgraphqlnew.Repository.ProductsRepository;
+using HotChocolate.Resolvers;
 using HotChocolate.Types;
 using System;
 using System.Collections.Generic;
@@ -14,16 +16,15 @@ namespace hcgraphqlnew.Types
       protected override void Configure(IObjectTypeDescriptor<Products> descriptor)
       {
          descriptor.Field(t => t.ProductId).Type<NonNullType<IntType>>();
-         descriptor.Field(t => t.Category).Type<ProductType>().Resolver(context =>
-         
-            context
-            .Service<ICategoriesRepository>()
-            .GetCategory(context.Parent<Categories>().CategoryId)
-
-         
+         descriptor.Field(t => t.Category).Type<CategoriesType>().Resolver(context =>
 
 
-         );
+               context.Service<ICategoriesRepository>().GetCategory(context.Parent<Products>().CategoryId));
+
+
+
+
       }
+      
    }
 }
