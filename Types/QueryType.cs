@@ -23,6 +23,17 @@ namespace hcgraphqlnew.Types
              .UseFiltering()
              .UseSorting();
 
+         descriptor.Field(t => t.GetCustomers(default))
+            .UseFiltering()
+            .UseSorting();
+
+         descriptor.Field(t => t.GetOrders(default))
+            .UseFiltering()
+            .UseSorting();
+         descriptor.Field(t => t.GetOrderDetails(default))
+            .UseFiltering()
+            .UseSorting();
+
       }
     }
 }
