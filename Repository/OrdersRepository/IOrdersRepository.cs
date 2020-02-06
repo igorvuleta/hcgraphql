@@ -9,5 +9,6 @@ namespace hcgraphqlnew.Repository.OrdersRepository
    public interface IOrdersRepository
    {
       IQueryable<Orders> GetOrders();
+      Task<IEnumerable<Orders>> GetOrdersList(int? id);
    }
 }

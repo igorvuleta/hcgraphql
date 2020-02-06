@@ -1,6 +1,7 @@
 ﻿using GreenDonut;
 using hcgraphqlnew.Models;
 using hcgraphqlnew.Repository.CategoriesRepository;
+using hcgraphqlnew.Repository.OrderDetailsRepository;
 using hcgraphqlnew.Repository.ProductsRepository;
 using HotChocolate.Resolvers;
 using HotChocolate.Types;
@@ -22,7 +23,11 @@ namespace hcgraphqlnew.Types
                context.Service<ICategoriesRepository>().GetCategory(context.Parent<Products>().CategoryId));
 
 
+         descriptor.Field(t => t.OrderDetails).Type<ListType<OrderDetailsType>>().Resolver(ctx =>
 
+            ctx.Service<IOrderDetailsRepository>().GetOrdersDetailsList(ctx.Parent<Products>().ProductId));
+
+        
 
       }
       

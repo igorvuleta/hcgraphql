@@ -19,18 +19,23 @@ namespace hcgraphqlnew.Types
                .Argument("CategoryId", a => a.Type<IntType>());
 
          descriptor.Field(t => t.GetCategories(default))
+            .Type<ListType<CategoriesType>>()
              .UseFiltering()
              .UseSorting();
 
          descriptor.Field(t => t.GetCustomers(default))
+            .Type<ListType<CustomersType>>()
             .UseFiltering()
             .UseSorting();
 
          descriptor.Field(t => t.GetOrders(default))
+            .Type<ListType<OrdersType>>()
             .UseFiltering()
+            .Argument("OrderId", a => a.Type<IntType>())
             .UseSorting();
 
          descriptor.Field(t => t.GetOrderDetails(default))
+            .Type<ListType<OrderDetailsType>>()
             .UseFiltering()
             .UseSorting();
 
