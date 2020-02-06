@@ -18,7 +18,6 @@ namespace hcgraphqlnew.Types
                .UseSorting()
                .Argument("CategoryId", a => a.Type<IntType>());
 
-
          descriptor.Field(t => t.GetCategories(default))
              .UseFiltering()
              .UseSorting();
@@ -30,10 +29,44 @@ namespace hcgraphqlnew.Types
          descriptor.Field(t => t.GetOrders(default))
             .UseFiltering()
             .UseSorting();
+
          descriptor.Field(t => t.GetOrderDetails(default))
             .UseFiltering()
             .UseSorting();
 
+         descriptor.Field(t => t.GetSuppliers(default))
+           .UseFiltering()
+           .UseSorting();
+
+         descriptor.Field(t => t.GetShippers(default))
+           .UseFiltering()
+           .UseSorting();
+
+         descriptor.Field(t => t.GetEmployees(default))
+           .UseFiltering()
+           .UseSorting();
+
+         descriptor.Field(t => t.GetTerritories(default))
+           .UseFiltering()
+           .UseSorting();
+
+         descriptor.Field(t => t.GetRegions(default))
+           .UseFiltering()
+           .UseSorting();
+
+         descriptor.Field(t => t.GetEmployeeTerritories(default))
+           .UseFiltering()
+           .UseSorting();
+         descriptor.Field(t => t.GetCustomerCustomerDemo(default))
+          .UseFiltering()
+          .UseSorting();
+         descriptor.Field(t => t.GetCustomerDemographics(default))
+         .UseFiltering()
+         .UseSorting();
+
+
+
+
       }
-    }
+   }
 }
