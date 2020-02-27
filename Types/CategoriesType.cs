@@ -19,7 +19,7 @@ namespace hcgraphqlnew.Types
 
             ctx.Service<IProductsRepository>().GetProductsList(ctx.Parent<Categories>().CategoryId));
 
-
+         
          
         
       }

@@ -14,7 +14,7 @@ namespace hcgraphqlnew.Repository.OrderDetailsRepository
 
       public IQueryable<OrderDetails> GetOrderDetails () => _northwindContext.OrderDetails;
 
-      public async Task<IEnumerable<OrderDetails>> GetOrdersDetailsList(int? id) => await _northwindContext.OrderDetails.Where(o => o.OrderId == id).ToListAsync();
+      public async Task<IEnumerable<OrderDetails>> GetOrdersDetailsList(int? id) => await _northwindContext.OrderDetails.Where(o => o.ProductId == id).ToListAsync();
      
    }
 }

@@ -12,6 +12,7 @@ namespace hcgraphqlnew.Types
       protected override void Configure(IObjectTypeDescriptor<OrderDetails> descriptor)
       {
          descriptor.Field(o => o.OrderId).Type<NonNullType<IntType>>();
+         descriptor.Field(o => o.ProductId).Type<NonNullType<IntType>>();
       }
    }
 }
