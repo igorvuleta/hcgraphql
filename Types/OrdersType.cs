@@ -1,4 +1,5 @@
 ﻿using hcgraphqlnew.Models;
+using hcgraphqlnew.Repository.CustomersRepository;
 using hcgraphqlnew.Repository.OrderDetailsRepository;
 using hcgraphqlnew.Repository.OrdersRepository;
 using HotChocolate.Types;
@@ -18,6 +19,7 @@ namespace hcgraphqlnew.Types
          descriptor.Field(o => o.OrderDetails).Type<ListType<OrderDetailsType>>().Resolver(ctx =>
 
          ctx.Service<IOrderDetailsRepository>().GetOrdersDetailsList(ctx.Parent<Orders>().OrderId));
+        
       }
    }
 }

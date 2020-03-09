@@ -9,5 +9,6 @@ namespace hcgraphqlnew.Repository.CustomersRepository
    public interface ICustomersRepository
    {
       IQueryable<Customers> GetCustomers();
+      Task<Customers> GetCustomerById(string id);
    }
 }
