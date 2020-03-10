@@ -40,6 +40,7 @@ namespace hcgraphqlnew.Types
             .UseSorting();
 
          descriptor.Field(t => t.GetSuppliers(default))
+            .Type<ListType<SuppliersType>>()
            .UseFiltering()
            .UseSorting();
 

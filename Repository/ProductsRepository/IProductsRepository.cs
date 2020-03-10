@@ -10,6 +10,8 @@ namespace hcgraphqlnew.Repository.ProductsRepository
    {
        IQueryable<Products> GetProducts();
       Task<IEnumerable<Products>> GetProductsList(int? id);
+      Task<Products> GetProductInOrders(int productID);
+      Task<IEnumerable<Products>> GetProductsInSuppliers(int? supplierID);
 
 
 

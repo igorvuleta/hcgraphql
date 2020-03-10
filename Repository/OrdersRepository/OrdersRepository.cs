@@ -12,6 +12,8 @@ namespace hcgraphqlnew.Repository.OrdersRepository
       private readonly northwindContext _northwindContext;
       public OrdersRepository(northwindContext northwindContext) => _northwindContext = northwindContext;
 
+      public async Task<Orders> GetOrder(int id) => await _northwindContext.Orders.Where(o => o.OrderId == id).FirstOrDefaultAsync();
+
       public IQueryable<Orders> GetOrders () => _northwindContext.Orders;
 
       public async Task<IEnumerable<Orders>> GetOrdersList(int? id) => await _northwindContext.Orders.Where(o => o.OrderId == id).ToListAsync();

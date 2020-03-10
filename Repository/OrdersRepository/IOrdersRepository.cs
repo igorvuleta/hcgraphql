@@ -11,5 +11,6 @@ namespace hcgraphqlnew.Repository.OrdersRepository
       IQueryable<Orders> GetOrders();
       Task<IEnumerable<Orders>> GetOrdersList(int? id);
       Task<IEnumerable<Orders>> GetOrdersListForCustomer(string id);
+      Task<Orders> GetOrder(int id);
    }
 }

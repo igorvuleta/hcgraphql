@@ -26,5 +26,9 @@ namespace hcgraphqlnew.Repository.ProductsRepository
       {
          return await _northwindContext.Products.Where(p => p.CategoryId == id).ToListAsync();
       }
+
+      public async Task<Products> GetProductInOrders(int productID) => await _northwindContext.Products.Where(p => p.ProductId == productID).FirstOrDefaultAsync();
+
+      public async Task<IEnumerable<Products>> GetProductsInSuppliers(int? supplierID) => await _northwindContext.Products.Where(p => p.SupplierId == supplierID).ToListAsync();
    }
 }
