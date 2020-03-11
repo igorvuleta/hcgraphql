@@ -3,6 +3,7 @@ using hcgraphqlnew.Models;
 using hcgraphqlnew.Repository.CategoriesRepository;
 using hcgraphqlnew.Repository.OrderDetailsRepository;
 using hcgraphqlnew.Repository.ProductsRepository;
+using hcgraphqlnew.Repository.SuppliersRepository;
 using HotChocolate.Resolvers;
 using HotChocolate.Types;
 using System;
@@ -26,6 +27,9 @@ namespace hcgraphqlnew.Types
          descriptor.Field(t => t.OrderDetails).Type<ListType<OrderDetailsType>>().Resolver(ctx =>
 
             ctx.Service<IOrderDetailsRepository>().GetOrdersDetailsList(ctx.Parent<Products>().ProductId));
+         descriptor.Field(s => s.Supplier).Type<SuppliersType>().Resolver(ctx =>
+
+            ctx.Service<ISuppliersRepository>().GetSupplierForProduct(ctx.Parent<Products>().SupplierId));
 
         
 

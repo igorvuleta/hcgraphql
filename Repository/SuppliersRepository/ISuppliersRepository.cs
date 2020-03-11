@@ -9,5 +9,6 @@ namespace hcgraphqlnew.Repository.SuppliersRepository
    public interface ISuppliersRepository
    {
       IQueryable<Suppliers> GetSuppliers();
+      Task<Suppliers> GetSupplierForProduct(int? supplierID);
    }
 }
